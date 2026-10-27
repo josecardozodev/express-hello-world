@@ -3,13 +3,13 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(express.json())
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => res.type('html').send(html));
 
 app.get('/req', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
+  console.log("Just got a request!")
+  res.send('Yo!')
 })
 
 
@@ -30,16 +30,28 @@ app.get('/pokemons', (req, res) => {
   console.log("Temos que pegar!")
   res.json(
     [
-      { order: 1, name: 'Pikachu'},
-      { order: 2, name: 'Caterpie'},
-      { order: 3, name: 'Pidgeotto'},
-      { order: 4, name: 'Bulbasaur'},
-      { order: 5, name: 'Charmander'},
-      { order: 6, name: 'Squirtle'},
-      { order: 7, name: 'Krabby'},
-      { order: 8, name: 'Raticate'},
-      { order: 9, name: 'Primeape'},
-      { order: 10, name: 'Muk'},
+      { order: 1, name: 'Pikachu' },
+      { order: 2, name: 'Caterpie' },
+      { order: 3, name: 'Pidgeotto' },
+      { order: 4, name: 'Bulbasaur' },
+      { order: 5, name: 'Charmander' },
+      { order: 6, name: 'Squirtle' },
+      { order: 7, name: 'Krabby' },
+      { order: 8, name: 'Raticate' },
+      { order: 9, name: 'Primeape' },
+      { order: 10, name: 'Muk' },
+    ]
+  )
+})
+
+//4
+app.post('/series', (req, res) => {
+  console.log("Séries mais absurdas!")
+  res.json(
+    [
+      { order: 1, name: 'Better Call Saul' },
+      { order: 2, name: 'Cyberpunk: Edgerunners II' },
+      { order: 3, name: 'One Piece: Live Action' }
     ]
   )
 })
