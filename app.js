@@ -62,8 +62,42 @@ app.get('/erro', (req, res) => {
   res.status(500).send('Erro interno do servidor')
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+//6 - API da Pokedex
+app.get('/pokedex/:nome', async (req, res) => {
+  try{
+    const nome = req.params.nome;
 
+    console.log("Buscando Pokémon:", nome);
+
+    const resposta = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${nome.toLowerCase()}`
+    );
+
+    if (!resposta.ok) {
+      return res.status(resposta.status).json({
+        erro: "Pokémon não encontrado na pokedex."
+      })
+    }
+
+    const dados = await resposta.json();
+
+    res.json({
+      id: dados.id,
+      nome: dados.name,
+      altura: dados.height,
+      peso: dados.weight,
+      experienciaBase: dados.base_experience
+    });
+  } catch (erro) {
+    console.error("Erro ao consumir a API:", erro);
+
+    res.status(500).json({
+      erro: "Erro ao consultar a API externa"
+    });
+  }
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 const html = `
 <!DOCTYPE html>
