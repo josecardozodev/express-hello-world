@@ -12,16 +12,37 @@ app.get('/req', (req, res) => {
     res.send('Yo!')
 })
 
+
+//1
 app.get('/meunome', (req, res) => {
   console.log("Recebendo nome!")
   res.send('Meu nome é José Eduardo Cardozo Araújo')
 })
 
+//2
 app.get('/tico', (req, res) => {
   console.log("Recebendo tico!")
   res.send('teco')
 })
 
+//3
+app.get('/pokemons', (req, res) => {
+  console.log("Temos que pegar!")
+  res.json(
+    [
+      { order: 1, name: 'Pikachu'},
+      { order: 2, name: 'Caterpie'},
+      { order: 3, name: 'Pidgeotto'},
+      { order: 4, name: 'Bulbasaur'},
+      { order: 5, name: 'Charmander'},
+      { order: 6, name: 'Squirtle'},
+      { order: 7, name: 'Krabby'},
+      { order: 8, name: 'Raticate'},
+      { order: 9, name: 'Primeape'},
+      { order: 10, name: 'Muk'},
+    ]
+  )
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
