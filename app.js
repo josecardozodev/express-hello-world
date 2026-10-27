@@ -56,6 +56,12 @@ app.post('/series', (req, res) => {
   )
 })
 
+//5
+app.get('/erro', (req, res) => {
+  console.log('Simulando erro!')
+  res.status(500).send('Erro interno do servidor')
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
